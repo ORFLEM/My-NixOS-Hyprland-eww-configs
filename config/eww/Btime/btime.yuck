@@ -1,0 +1,21 @@
+(defpoll day :interval "30m" "date '+%d-%m-%y'")
+(defpoll weekday :interval "30m" "date '+%A'")
+
+(defwidget Btime []
+  (box :orientation "v" :halign "end" :valign "bottom" :space-evenly false
+    (label :xalign 1 :style "font-size: 35px; opacity: 0.45; font-family: FauxHanamin; font-weight: bold; color: #FFFFFF" :text day)
+    ; (label :xalign 1 :style "font-size: 45px; opacity: 0.35; font-family: 'Mononki Nerd Font Propo'; font-weight: bold; color: #FFFFFF; margin: -25px 0px -15px 0px;" :text "")
+    (label :xalign 1 :style "font-size: 70px; opacity: 0.6; font-family: FauxHanamin; font-weight: bold; color: #FFFFFF" :text weekday)
+	)
+)
+    
+
+(defwindow Btime
+  :monitor 0
+  :stacking "bottom"
+  :windowtype "desktop"
+  :geometry (geometry :x "15px" :y "15px"
+            :width "1000px"
+            :anchor "bottom right")
+  (Btime)
+)

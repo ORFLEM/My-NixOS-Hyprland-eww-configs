@@ -1,0 +1,12 @@
+(deflisten notifs :initial ""
+  `nix-shell -p python3 python3Packages.pygobject3 python3Packages.dbus-python gobject-introspection --run "python3 ~/.config/eww/notif/main.py"`)
+
+(defwindow notifications
+  :monitor 0
+  :geometry (geometry :x "6px" :y "6px"
+            :width "300"
+            :height "1"
+            :anchor "top right")
+            :stacking "overlay"
+  (literal :content notifs)
+)
