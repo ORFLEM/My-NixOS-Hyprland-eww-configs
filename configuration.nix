@@ -118,51 +118,27 @@
   programs.dconf.enable = true;
   services.dbus.packages = with pkgs; [ dconf gnome2.GConf gcr libnotify glib gtk3 ];
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="tty", KERNEL=="ttyACM*", ATTRS{idVendor}=="346e", ACTION=="add", MODE="0666", TAG+="uaccess"
-    SUBSYSTEM=="misc", KERNEL=="uinput", OPTIONS+="static_node=uinput", TAG+="uaccess"
-    SUBSYSTEM=="usb", ATTRS{idVendor}=="346e", MODE="0666", GROUP="plugdev"
-    SUBSYSTEM=="input", ATTRS{idVendor}=="346e", MODE="0666", GROUP="input"
-  '';
-
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   security.pam.services.sddm.enableGnomeKeyring = true;
 
   environment.systemPackages = with pkgs; [
     # GUI
-    anilibria-winmaclinux
-    anydesk
-    avalonia-ilspy
     blueman
-    bottles
-    boxflat
     eww
-    evince
     file-roller
     gnome-calculator
     hyprland
     hyprlock
     hyprpaper
-    inkscape
     kitty
-    krita
-    kdePackages.kdenlive
-    libreoffice-qt6-fresh
     mpv
     mpvpaper
-    jetbrains.pycharm-community-src
-    obs-studio
     pavucontrol
-    prismlauncher
     pdfarranger
     rofi-wayland
     rose-pine-hyprcursor
     shotwell
-    solaar
-    steam
-    swaybg
-    telegram-desktop
     (sddm-astronaut.override { embeddedTheme = "pixel_sakura"; })
     vscodium
 
@@ -206,7 +182,6 @@
     wl-clipboard
     yazi
     zip
-    zoom-us
 
     # AMD Card (Drivers)
     amdvlk
