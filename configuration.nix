@@ -81,6 +81,9 @@
 
   fonts.packages = with pkgs; [
     iosevka-bin
+    texlivePackages.cjk
+    texlivePackages.cjkutils
+    noto-fonts-cjk-sans
     nerd-fonts._3270
     nerd-fonts.mononoki
   ];
