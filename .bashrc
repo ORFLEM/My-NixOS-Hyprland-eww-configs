@@ -48,30 +48,6 @@ local RESET="\[\033[00m\]"            # Сброс цвета
 # Обновляем промпт перед каждой командой
 PROMPT_COMMAND="fancy_prompt"
 
-calc() {
-    # Если аргумент один (например, calc "5 + 3")
-    if [ $# -eq 1 ]; then
-        local expr="$1"
-    # Если аргументов несколько (например, calc 5 + 3)
-    else
-        local expr="$*"
-    fi
-
-    # Исправленный regex: '-' в конце списка символов
-    if [[ "$expr" =~ ^[0-9+*/%^().\ -]+$ ]]; then
-        if [[ "$expr" =~ \. ]]; then
-            # Дроби: используем awk
-            echo "$expr" | awk '{print $0 " = " $0 + 0}' | awk '{print $NF}'
-        else
-            # Целочисленные выражения: используем $((...))
-            echo "$((expr))"
-        fi
-    else
-        echo "Ошибка: неверное выражение. Разрешённые символы: 0-9, +-*/%^()."
-    fi
-}
-
-
     #games
     alias tetris='bastet'
     alias snake='nsnake'
