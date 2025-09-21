@@ -136,7 +136,7 @@
     mpvpaper
     pavucontrol
     pdfarranger
-    rofi-wayland
+    rofi
     rose-pine-hyprcursor
     shotwell
     (sddm-astronaut.override { embeddedTheme = "pixel_sakura"; })
