@@ -246,5 +246,31 @@
     extraPkgs = pkgs: with pkgs; [ libdrm wayland ];
   };
 
+  systemd.services.set-tty-colors = {
+    description = "Apply custom TTY color scheme at boot";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      for tty in /dev/tty{1..6}; do
+        echo -en "\e]P01d2021" > "$tty"  # black
+        echo -en "\e]P1cc241d" > "$tty"  # red
+        echo -en "\e]P298971a" > "$tty"  # green
+        echo -en "\e]P3d79921" > "$tty"  # yellow
+        echo -en "\e]P4458588" > "$tty"  # blue
+        echo -en "\e]P5b16286" > "$tty"  # magenta
+        echo -en "\e]P6689d6a" > "$tty"  # cyan
+        echo -en "\e]P7a89984" > "$tty"  # white
+        echo -en "\e]P8928374" > "$tty"  # bright black
+        echo -en "\e]P9fb4934" > "$tty"  # bright red
+        echo -en "\e]PAb8bb26" > "$tty"  # bright green
+        echo -en "\e]PBfabd2f" > "$tty"  # bright yellow
+        echo -en "\e]PC83a598" > "$tty"  # bright blue
+        echo -en "\e]PDd3869b" > "$tty"  # bright magenta
+        echo -en "\e]PE8ec07c" > "$tty"  # bright cyan
+        echo -en "\e]PFebdbb2" > "$tty"  # bright white
+      done
+    '';
+  };
+
   system.stateVersion = "25.05";
 }
