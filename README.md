@@ -161,22 +161,22 @@ and in eww at "~/.config/eww/bar" in the hbar.yuck file, replace (lbgz) with (bg
 
 ## What the configs look like:
 ### Desktop
-![alt_image](./images/1.png)
-![alt_image](./images/2.png)
+![alt_image](./eng/images/1.png)
+![alt_image](./eng/images/2.png)
 
 ### Control Panel
-![alt_image](./images/3.png)
+![alt_image](./eng/images/3.png)
 ![alt_image](./images/4.png)
 ![alt_image](./images/5.png)
 
 ### Dashboard
-![alt_image](./images/6.png)
+![alt_image](./eng/images/6.png)
 
 ### Power Menu
-![alt_image](./images/7.png)
+![alt_image](./eng/images/7.png)
 
 ### Application Launcher
-![alt_image](./images/8.png)
+![alt_image](./eng/images/8.png)
 
 # Installation
 
