@@ -28,6 +28,7 @@ System : `NixOS`
 * Редакторы: `micro | helix`
 * Консольные оболочки: `bash | fish`
 * Обои: `mpvpaper | hyprpaper`
+* Основная тема для терминалов, tty, gtk и прочего: `kanagawa`
 
 ```
 в случае тормозов, замените mpvpaper на hyprpaper,
