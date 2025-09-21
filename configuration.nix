@@ -247,40 +247,60 @@
   };
 
   console = {
-      # ЛУЧШИЙ ВЫБОР: Spleen с Box Drawing + Block Elements
-      font = "ter-v32n";  # или spleen-16x32 для меньших экранов
-      
+      font = "ter-v32n";
       packages = with pkgs; [
-        spleen           # Box Drawing, Block Elements, Braille Patterns
-        unifont          # Unifont PSF версия - максимум Unicode символов
-        terminus_font    # Запасной вариант
-      ];
+       terminus_font
+       spleen
+       unifont
+       ];
+      earlySetup = true;  # Загружает шрифт в initrd
     };
-  systemd.services.set-tty-colors = {
-    description = "Apply custom TTY color scheme at boot";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig.Type = "oneshot";
-    script = ''
-      for tty in /dev/tty{1..6}; do
-        echo -en "\e]P01d2021" > "$tty"  # black
-        echo -en "\e]P1cc241d" > "$tty"  # red
-        echo -en "\e]P298971a" > "$tty"  # green
-        echo -en "\e]P3d79921" > "$tty"  # yellow
-        echo -en "\e]P4458588" > "$tty"  # blue
-        echo -en "\e]P5b16286" > "$tty"  # magenta
-        echo -en "\e]P6689d6a" > "$tty"  # cyan
-        echo -en "\e]P7a89984" > "$tty"  # white
-        echo -en "\e]P8928374" > "$tty"  # bright black
-        echo -en "\e]P9fb4934" > "$tty"  # bright red
-        echo -en "\e]PAb8bb26" > "$tty"  # bright green
-        echo -en "\e]PBfabd2f" > "$tty"  # bright yellow
-        echo -en "\e]PC83a598" > "$tty"  # bright blue
-        echo -en "\e]PDd3869b" > "$tty"  # bright magenta
-        echo -en "\e]PE8ec07c" > "$tty"  # bright cyan
-        echo -en "\e]PFebdbb2" > "$tty"  # bright white
-      done
-    '';
-  };
+    
+    # Оригинальные Kanagawa цвета на уровне ядра (применяются при загрузке)
+    boot.kernelParams = [
+      "fbcon=font:TER16x32"
+      "vt.default_utf8=1"
+      "consoleblank=0"
+      
+      # Оригинальные Kanagawa RGB цвета:
+      # 0=black, 1=red, 2=green, 3=yellow, 4=blue, 5=magenta, 6=cyan, 7=white
+      # 8=br_black, 9=br_red, 10=br_green, 11=br_yellow, 12=br_blue, 13=br_magenta, 14=br_cyan, 15=br_white
+      "vt.default_red=22,195,118,192,126,149,106,200,114,232,152,230,127,147,122,220"
+      "vt.default_grn=22,64,148,163,156,127,149,192,115,36,187,195,180,138,168,215"
+      "vt.default_blu=29,67,106,110,216,184,137,147,105,36,108,132,202,169,159,186"
+    ];
+    
+    # Systemd сервис для закрепления цветов после загрузки
+    systemd.services.set-tty-colors = {
+      description = "Apply Kanagawa TTY colors";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "systemd-vconsole-setup.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = ''
+        for tty in /dev/tty{1..6}; do
+          # Оригинальные Kanagawa цвета
+          echo -en "\e]P016161d" > "$tty"  # black
+          echo -en "\e]P1c34043" > "$tty"  # red
+          echo -en "\e]P276946a" > "$tty"  # green
+          echo -en "\e]P3c0a36e" > "$tty"  # yellow
+          echo -en "\e]P47e9cd8" > "$tty"  # blue
+          echo -en "\e]P5957fb8" > "$tty"  # magenta
+          echo -en "\e]P66a9589" > "$tty"  # cyan
+          echo -en "\e]P7c8c093" > "$tty"  # white
+          echo -en "\e]P8727169" > "$tty"  # bright black
+          echo -en "\e]P9e82424" > "$tty"  # bright red
+          echo -en "\e]PA98bb6c" > "$tty"  # bright green
+          echo -en "\e]PBe6c384" > "$tty"  # bright yellow
+          echo -en "\e]PC7fb4ca" > "$tty"  # bright blue
+          echo -en "\e]PD938aa9" > "$tty"  # bright magenta
+          echo -en "\e]PE7aa89f" > "$tty"  # bright cyan
+          echo -en "\e]PFdcd7ba" > "$tty"  # bright white
+        done
+      '';
+    };
 
   system.stateVersion = "25.05";
 }
