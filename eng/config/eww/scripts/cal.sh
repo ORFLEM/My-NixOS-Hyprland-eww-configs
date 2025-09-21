@@ -6,18 +6,18 @@ STATE_FILE="$HOME/.config/eww/calendar_state"
 # Функция для получения названия месяца
 month_name() {
     case $1 in
-        1) echo "январь" ;;
-        2) echo "февраль" ;;
-        3) echo "март" ;;
-        4) echo "апрель" ;;
-        5) echo "май" ;;
-        6) echo "июнь" ;;
-        7) echo "июль" ;;
-        8) echo "август" ;;
-        9) echo "сентябрь" ;;
-        10) echo "октябрь" ;;
-        11) echo "ноябрь" ;;
-        12) echo "декабрь" ;;
+        1) echo "january" ;;
+        2) echo "february" ;;
+        3) echo "march" ;;
+        4) echo "april" ;;
+        5) echo "may" ;;
+        6) echo "june" ;;
+        7) echo "july" ;;
+        8) echo "august" ;;
+        9) echo "september" ;;
+        10) echo "october" ;;
+        11) echo "november" ;;
+        12) echo "december" ;;
     esac
 }
 

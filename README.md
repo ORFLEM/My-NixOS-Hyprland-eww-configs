@@ -62,22 +62,22 @@ System : `NixOS 25.11 (unstable)`
 
 # как выглядят конфиги:
 ### Р.стол
-![alt_image](./images/1.png)
-![alt_image](./images/2.png)
+![alt_image](./rus/images/1.png)
+![alt_image](./rus/images/2.png)
 
 ### Панель управления
-![alt_image](./images/3.png)
-![alt_image](./images/4.png)
-![alt_image](./images/5.png)
+![alt_image](./rus/images/3.png)
+![alt_image](./rus/images/4.png)
+![alt_image](./rus/images/5.png)
 
 ### Dashboard
-![alt_image](./images/6.png)
+![alt_image](./rus/images/6.png)
 
 ### Кнопки питания
-![alt_image](./images/7.png)
+![alt_image](./rus/images/7.png)
 
 ### Лаунчер приложений
-![alt_image](./images/8.png)
+![alt_image](./rus/images/8.png)
 
 # Установка
 ```

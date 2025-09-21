@@ -316,14 +316,14 @@
   (box :orientation "v" :space-evenly false
     (revealer :transition "slidedown" :reveal wthr_inf
       (eventbox :onhoverlost "eww update wthr_inf=false"
-        (box :orientation "v" :space-evenly false :class "wther" :spacing 5
-          (box :space-evenly false :orientation "v" :style "padding: 12px 12px 0px 12px"
-            (box :space-evenly false :spacing 130
-              (label :justify "left" :text "Томск")
-              (label :class "gray_wthr" :text "Обновлено ${wther.updated}")
+        (box :orientation "v" :space-evenly false :class "wther" :spacing 6
+          (box :space-evenly false :orientation "v" :style "padding: 12px 12px 14px 12px" :spacing 15
+            (box :space-evenly false :spacing 145
+              (label :justify "left" :text "City")
+              (label :class "gray_wthr" :text "Updated ${wther.updated}")
             )
             (box :space-evenly false :spacing 75
-              (box :orientation "v"  :space-evenly false :halign "start"
+              (box :orientation "v"  :space-evenly false :halign "start" :spacing 10
                 (label :text "${wther.temp}°" :class "big_wthr_clr")
                 (label :lines 3 :limit-width 15 :justify "left" :text {wther.desc})
               )
@@ -331,14 +331,14 @@
                 (label :text {wther.icon} :class "big_wthr")
               )
             )
-            (box :space-evenly false :spacing 25 :class "gray_wthr" :halign "start"
-              (box :orientation "v" :halign "start"
-                (label :text "Ощущается ${wther.feels}°")
-                (label :text "Влажность ${wther.humidity}%")
+            (box :space-evenly false :spacing 95 :class "gray_wthr" :halign "start"
+              (box :orientation "v" :halign "start" :spacing 5
+                (label :text "Feels ${wther.feels}°")
+                (label :text "Humidity ${wther.humidity}%")
               )
-              (box :orientation "v" :halign "start"
-                (label :text "Ветер ${wther.wind} м/с")
-                (label :text "Дав. ${wther.pressure} мм рт.ст.")
+              (box :orientation "v" :halign "start" :spacing 5
+                (label :text "Wind ${wther.wind} м/с")
+                (label :text "Pressure ${wther.pressure}")
               )
             )
           )
