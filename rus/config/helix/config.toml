@@ -1,0 +1,17 @@
+theme = "kanagawa"
+
+[editor]
+line-number = "relative"
+mouse = true
+auto-save = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+A-v = ":vsplit"
+A-h = ":hsplit"
+A-s = ":w"
