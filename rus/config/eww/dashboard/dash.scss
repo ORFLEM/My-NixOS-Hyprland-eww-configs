@@ -1,6 +1,6 @@
 .dash {
   background: $background;
-  font-family: "Mononoki";
+  font-family: "Mononoki Nerd Font Propo";
   color: $font;
   border-radius: 8px;
   padding: 3px;
@@ -160,7 +160,7 @@ scale trough highlight {
 .dash-pwr button {
   background: transparent;
   border-radius: 4px;
-  padding: 0px 50px 0px 50px;
+  padding: 0px 25px;
   transition: all 0.2s ease-in-out;
 }
 
@@ -173,5 +173,5 @@ scale trough highlight {
 .dash-text {
   background: $background-alt;
   border-radius: 5px;
-  padding: 3px 55px;
+  padding: 3px 56px;
 }
