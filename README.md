@@ -201,4 +201,4 @@ You are free to use, study, and modify this code.
 * If you share your modifications or code based on this work (e.g., by forking it), you must make your source code equally open and available to everyone under this same license.
 * This ensures that all improvements and derivative works remain free and open, just like the original.
 
-For the full license text, see the LICENSE file.
+For the full license text, see the [LICENSE](./LICENSE) file.
