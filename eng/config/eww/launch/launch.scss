@@ -1,0 +1,59 @@
+/* eww.css */
+
+* {
+  all: unset;
+}
+
+.lnch {
+  border-radius: 8px;
+  background-color: #474747;
+}
+
+.lft {
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  padding: 3px;
+  background-color: #2b2b2b;
+}
+
+.rght {
+  padding: 3px;
+}
+
+.srch {
+  border-radius: 5px;
+  padding: 12px;
+  background-color: #2b2b2b;
+}
+
+.inpt {
+  color: #CCCCCC;
+}
+
+.btns {
+  border-radius: 5px;
+  background-color: #474747;
+  padding: 3px;
+}
+
+.btn {
+  padding: 8px 32px;
+  border-radius: 2px;
+  background-color: #2b2b2b;
+  color: #CCCCCC;
+}
+
+.btn.sel {
+  background-color: #F5E7C1;
+  color: #000000;
+}
+
+.elem {
+  padding: 6px;
+  color: #CCCCCC;
+}
+
+.elem:hover {
+  background-color: #3b3b3b;
+}
