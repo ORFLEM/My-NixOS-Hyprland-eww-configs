@@ -103,7 +103,7 @@ System : `NixOS 25.11 (unstable)`
 
 Полный текст лицензии см. в файле [LICENSE](./LICENSE).
 
-[![boosty](https://img.shields.io/badge/Поддержи_на_boosty-F16061?style=for-the-badge&logo=boosty&logoColor=f5f5f5)](https://boosty.to/orflem.ru/donate)
+[![boosty](https://img.shields.io/badge/Поддержи_на_boosty-F16061?style=for-the-badge&logo=boosty&logoColor=f5f5f5)](https://boosty.to/orflem.ru/)
 
 # Eng
 
@@ -207,4 +207,4 @@ You are free to use, study, and modify this code.
 
 For the full license text, see the [LICENSE](./LICENSE) file.
 
-[![boosty](https://img.shields.io/badge/support_me_on_boosty-F16061?style=for-the-badge&logo=boosty&logoColor=f5f5f5)](https://boosty.to/orflem.ru/donate)
+[![boosty](https://img.shields.io/badge/support_me_on_boosty-F16061?style=for-the-badge&logo=boosty&logoColor=f5f5f5)](https://boosty.to/orflem.ru/)
