@@ -43,16 +43,16 @@
   (box :class "btns" :orientation "h" :space-evenly true :spacing 3
     (button :class "btn ${mode == "drun" ? "sel" : ""}"
             :onclick "eww update mode='drun' && eww update srch='' && eww update items=\"$(./launch/launch.sh ${mode} list '')\""
-            "Проги")
+            "run")
     (button :class "btn ${mode == "clipboard" ? "sel" : ""}"
             :onclick "eww update mode='clipboard' && eww update srch='' && eww update items=\"$(./launch/launch.sh ${mode} list '')\""
-            "Буфер")
+            "clipboard")
     (button :class "btn ${mode == "files" ? "sel" : ""}"
             :onclick "eww update mode='files' && eww update srch='' && eww update items=\"$(./launch/launch.sh ${mode} list '')\""
-            "Файлы")
+            "files")
     (button :class "btn ${mode == "windows" ? "sel" : ""}"
             :onclick "eww update mode='windows' && eww update srch='' && eww update items=\"$(./launch/launch.sh ${mode} list '')\""
-            "Окна")
+            "active")
   )
 )
 
