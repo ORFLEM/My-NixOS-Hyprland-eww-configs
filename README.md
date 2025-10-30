@@ -7,9 +7,10 @@ System : `NixOS 25.11 (unstable)`
 # Важно
 ```
 В данных конфигах есть спорные решения, которые не всем понравятся:
-  использование NixOS без home manager и flakes;
+  использование NixOS без home manager и flakes; (flakes есть теперь, но я его не подготовил под выкладывание)
   bash, вместо fish;
-  mpvpaper, вместо hyprpaper;
+  mpvpaper, вместо swww;
+  странные идеи в горячих клавишах и интерфейсе;
 Но это можно выбрать
 ```
 
@@ -23,7 +24,7 @@ System : `NixOS 25.11 (unstable)`
 ```
 
 ## -- Основной софт -- :
-* Тайлинг:`Hyprland` (идут работы над поддержкой niri)
+* Тайлинг:`Hyprland` (временное прекращение работы над поддержкой niri, причины: плохое понимание конфига и незаконченная замена rofi на eww launcher)
 * Терминал: `Kitty`
 * Лаунчер: `Rofi` (идёт под замену на eww, доступен для теста, но не работает, помогите если сможете)
 * Блокировщик экрана: `Hyprlock`
@@ -32,13 +33,19 @@ System : `NixOS 25.11 (unstable)`
 * Проводник: `ranger | yazi | thunar`
 * Редакторы: `micro | helix`
 * Консольные оболочки: `bash | fish`
-* Обои: `mpvpaper | hyprpaper` (идут работы над добавлением hyprlax, проблемы добавления: ручная сборка пакета)
+* Обои: `mpvpaper | swww` (hyprpaper мерцает на amd карте, он заменён на swww, идут работы над добавлением hyprlax, проблемы добавления: ручная сборка пакета)
 * Основная тема для терминалов, tty, gtk и прочего: `kanagawa`
 
 ```
-в случае тормозов, замените mpvpaper на hyprpaper,
-раскомментировав в hyprland.conf строку с hyprpaper и закомментировав строку с mpvpaper,
+в случае тормозов, замените mpvpaper на swww,
+раскомментировав в hyprland.conf строку с swww и закомментировав строку с mpvpaper,
 а в eww по пути "~/.config/eww/bar" в файле hbar.yuck заменить (lbgz) на (bg)
+```
+
+```
+Тестируется новый тип mini player в панели с использованием обложки альбома в качестве фона.
+Не уверен, что это хорошая идея, но можно попробовать.
+если будет отлично смотреться и при этом не будет проблем с читаемостю названия и автора, то загружу в гит
 ```
 
 ## -- Комбинации клавиш -- :
@@ -60,6 +67,11 @@ System : `NixOS 25.11 (unstable)`
 * `capslock` или `shift + alt` - смена языка
 * `shift + capslock` - включить | выключить капс
 * `super + space` - раскрыть окно, поверх других
+* `alt + enter` - воспроизвести | остановить музыку
+* `alt + shift` - следующий трек
+* `alt + ctrl` - предыдущий трек
+* `alt + pgup` - повысить яркость
+* `alt + pgdn` - понизить яркость
 
 # как выглядят конфиги:
 ### Р.стол
@@ -110,11 +122,13 @@ System : `NixOS 25.11 (unstable)`
 # Important
 ```
 These configs include controversial choices that not everyone may like:
-  using NixOS without Home Manager and Flakes;
+  using NixOS without Home Manager and Flakes; (Flakes are now available, but not prepared for public release)
   bash instead of fish;
-  mpvpaper instead of hyprpaper;
+  mpvpaper instead of swww;
+  strange ideas in binds & my ui;
 But these are customizable.
 ```
+
 # About the Configs
 ```
 These configs are built on Hyprland, eww, and rofi.
@@ -125,22 +139,28 @@ Please don't judge too harshly.
 ```
 
 ## -- Core Software -- :
-* Tiling: `Hyprland` (working on niri support)
+* Tiling: `Hyprland` (niri support temporarily discontinued, reasons: poor understanding of config and incomplete replacement of rofi with eww launcher)
 * Terminal: `Kitty`
-* Launcher: `Rofi` (being replaced with eww, available for testing but currently not working - help wanted if you can!)
+* Launcher: `Rofi` (being replaced with eww, available for testing but currently not working - help appreciated!)
 * Screen Locker: `Hyprlock`
 * System Monitoring: `Btop | htop` (also available in dashboard)
 * Interface: `eww`
 * File Manager: `ranger | yazi | thunar`
 * Editors: `micro | helix`
 * Shells: `bash | fish`
-* Wallpaper: `mpvpaper | hyprpaper` (working on hyprlax addition, current blocker: manual package building)
+* Wallpaper: `mpvpaper | swww` (~~hyprpaper~~ deprecated due to flickering on AMD cards, replaced with swww; working on hyprlax addition, current blocker: manual package building)
 * Main theme for terminals, TTY, GTK, etc.: `kanagawa`
 
 ```
-If you experience lag, replace mpvpaper with hyprpaper:
-uncomment the hyprpaper line and comment the mpvpaper line in hyprland.conf,
+If you experience lag, replace mpvpaper with swww:
+uncomment the swww line and comment the mpvpaper line in hyprland.conf,
 and in eww at "~/.config/eww/bar" in the hbar.yuck file, replace (lbgz) with (bg).
+```
+
+```
+Testing a new mini player type in the bar that uses album artwork as background.
+Not sure if it's a good idea, but feel free to try it out.
+If it looks great and doesn’t mess with the readability of the title and author, I’ll upload it to Git.
 ```
 
 ## -- Keybindings -- :
@@ -150,7 +170,7 @@ and in eww at "~/.config/eww/bar" in the hbar.yuck file, replace (lbgz) with (bg
 * `Super + l` - Dashboard
 * `Super + 1-0` or `Super + Scroll Up | Scroll Down` - Switch between workspaces
 * `Super + Shift + 1-0` or `Super + Shift + Scroll Up | Scroll Down` - Move windows between workspaces
-* `Super + Ctrl` + `Arrow Keys or Super + RMB` - Resize windows
+* `Super + Ctrl + Arrow Keys` or `Super + RMB` - Resize windows
 * `Super + Arrow Keys` or `Super + LMB` - Move windows
 * `Super + Shift + Ctrl + w | s | a | d` - Switch between windows
 * `Super + Alt + LMB` - Toggle window type: floating or tiling
@@ -158,12 +178,17 @@ and in eww at "~/.config/eww/bar" in the hbar.yuck file, replace (lbgz) with (bg
 * `Super + s` - Fullscreen screenshot
 * `Super + d` - Selected area screenshot
 * `Super` - Open application launcher
-* `Super + `p - Center window vertically
-* `CapsLock` or Shift + Alt - Switch language
-* `Shift` + CapsLock - Toggle Caps Lock
-* `Super` + Space - Expand window above others
+* `Super + p` - Center window relative to vertical axis
+* `CapsLock` or `Shift + Alt` - Switch language
+* `Shift + CapsLock` - Toggle Caps Lock
+* `Super + Space` - Expand window above others
+* `Alt + Enter` - Play | Pause music
+* `Alt + Shift` - Next track
+* `Alt + Ctrl` - Previous track
+* `Alt + PgUp` - Increase brightness
+* `Alt + PgDn` - Decrease brightness
 
-## What the configs look like:
+# What the configs look like:
 ### Desktop
 ![alt_image](./eng/images/1.png)
 ![alt_image](./eng/images/2.png)
@@ -199,11 +224,10 @@ The notification code (in the eww/notif folder) is written by Vimjoyer and inclu
 These configurations are distributed under the **GNU GPL v3** license.
 
 In simple terms, this means:
+- You are free to use, study, and modify this code.
+- If you share your modifications or code based on this work (e.g., by forking it), you **must** make your source code equally open and available to everyone under this same license.
 
-You are free to use, study, and modify this code.
-
-* If you share your modifications or code based on this work (e.g., by forking it), you must make your source code equally open and available to everyone under this same license.
-* This ensures that all improvements and derivative works remain free and open, just like the original.
+This ensures that all improvements and derivative works remain free and open, just like the original.
 
 For the full license text, see the [LICENSE](./LICENSE) file.
 

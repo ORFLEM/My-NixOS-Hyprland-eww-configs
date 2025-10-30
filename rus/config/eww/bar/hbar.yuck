@@ -21,9 +21,9 @@
 
 (defwidget bar []
   (centerbox :orientation "h" :hexpand false :class "bar"
-    (box :class "bar-section" :valign "center"  :halign "start" :orientation "h" :space-evenly false :spacing 3
+    (box :class "bar-section" :valign "center" :halign "start" :orientation "h" :space-evenly false :spacing 3
       (launcher)
-      (lbgz)
+      (bg)
       (workspaces)
       (active_window)
     )      
@@ -78,6 +78,12 @@
   )
 )
 
+(defwidget hbg []
+  (box :class "bg" :orientation "h" :space-evenly true :halign "start"
+    (button :onclick "./scripts/change-wall.sh hyprlax" :tooltip "обновить обои" "")
+  )
+)
+
 (defwidget workspaces []
   (eventbox :onscroll "if [ '{}' = 'up' ]; then hyprctl dispatch workspace -1; else hyprctl dispatch workspace +1; fi"
     (box :class "ws" :orientation "h" :space-evenly false
@@ -123,7 +129,7 @@
 
 (defwidget weather []
   (box :class "tme" :orientation "h" :space-evenly true :halign "start"
-    (button :tooltip "лкм: открыть погоду" :onclick "./scripts/popup.sh wthr" "${wther.icon} ${wther.temp}°C")
+    (button :tooltip "лкм: октрыть погоду" :onclick "./scripts/popup.sh wthr" "${wther.icon} ${wther.temp}°C")
   )
 )
 
@@ -194,8 +200,8 @@
 (defwidget volume []
   (eventbox :onscroll "if [ '{}' == 'up' ]; then pamixer -i 5; else pamixer -d 5; fi" :vexpand true :valign "fill"
     (box :class "vlm" :orientation "h" :space-evenly false :valign "fill" :vexpand false :tooltip "громкость"
-      (label :class "lbl-clr" :text "󰕾 ")
-      (label :text volume)
+      (label :class "lbl-clr" :text "${volume.sign} ")
+      (label :text "${volume.vol}%")
     )
   )
 )
@@ -344,7 +350,7 @@
           )
           (box :class "week_wthr"
             (scroll :hscroll true :vscroll false
-              (box :spacing 65
+              (box :spacing 30
                 (box :orientation "v"
                   (label :text {wther.forecast[0].day})
                   (label :class "mid_wthr" :text {wther.forecast[0].icon})
@@ -425,6 +431,7 @@
   :windowtype "normal"
 	:geometry (geometry :anchor "top right"
                       :x "6px"
+                      ; :y "-8px"
 						          :width "350px" 
 						          :height "0px")
 	(player)

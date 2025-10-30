@@ -32,6 +32,18 @@ cleanup() {
 }
 
 case "$MODE" in
+  hyprlax)
+    IMAGE_FILE=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) -size +0c | shuf -n1 || true)
+    if [ -n "$IMAGE_FILE" ]; then
+        cp "$IMAGE_FILE" "$CACHE_IMG" || true
+        # Чистим папку после успешной обработки
+        cleanup
+    fi
+    pkill hyprpaper 2>/dev/null || true
+    pkill mpvpaper 2>/dev/null || true
+    pkill -f /usr/local/bin/hyprlax 2>/dev/null || true
+    /usr/local/bin/hyprlax -c "$HOME/.config/hyprlax/pixel-city/parallax.toml"
+  ;;
   stat)
     pkill mpvpaper 2>/dev/null || true
     IMAGE_FILE=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.png" \) -size +0c | shuf -n1 || true)

@@ -7,3 +7,5 @@
 (include "./dashboard/dash.yuck")
 (include "./power_pc/power.yuck")
 (include "./variables&polling.yuck")
+(include "./launch/launch.yuck")
+(include "./sys_inf/sys.yuck")

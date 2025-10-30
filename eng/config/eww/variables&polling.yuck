@@ -6,6 +6,7 @@
 (defvar plr_inf false)
 (defvar cal_inf false)
 (defvar wthr_inf false)
+(defvar rvol false)
 
 ;; Bar width
 (defpoll bar-width
@@ -23,11 +24,15 @@
   :interval "15m" 
   "./scripts/weather_wid.sh")
 
+;; brightness
+(deflisten brightness
+  :initial ""
+  "./scripts/birghtness.sh")
+
 ;; Audio
 (deflisten volume 
   :initial "?"
   "./scripts/vol.sh")
-
 ;; Time and date
 (deflisten time_data 
   :initial "" 

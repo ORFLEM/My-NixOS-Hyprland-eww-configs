@@ -29,7 +29,7 @@
 )
 
 (defwidget plr []
-  (box :orientation "v" :space-evenly false :spacing 23 :class "dash-plr"
+  (box :orientation "v" :space-evenly false :spacing 21 :class "dash-plr"
     (box :class "dash-plr-art" :style "background-image: url('${music.art}');")
     (label :text {music.title} :limit-width 20)
     (label :text {music.artist} :limit-width 20)
@@ -161,7 +161,7 @@
 
 (defwindow dashboard 
   :monitor 0
-  :stacking "fg"
+  :stacking "overlay"
   :windowtype "normal"
   :geometry (geometry :anchor "center"
             :height "600px"
