@@ -190,16 +190,20 @@ tooltip.background {
   padding: 2px;
   color: $font;
   background: $background-alt;
+  background-size: cover;
+  background-position: center;
   border: none;
   border-radius: 5px;
 }
 
 .msc button {
-  padding: 0px 2px;
-  background: transparent;
+  
+  padding: 0px 5px;
+  background: $background-alt;
   color: $font;
   border-radius: 3px;
   transition: all 0.2s ease-in-out;
+  opacity: 0.65;
 }
 
 .msc button:hover {
@@ -341,6 +345,14 @@ button:hover .lbl-clr {
 .cal label.today {
   background: $accent;
   color: $font-dark;
+}
+.cal label.tholiday {
+  color: $accent;
+  background: $background-alt;
+}
+.cal label.oholiday {
+  color: $accent;
+  /* background: $background-alt; */
 }
 
 // weather

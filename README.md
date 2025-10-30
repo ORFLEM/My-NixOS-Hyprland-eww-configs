@@ -45,7 +45,6 @@ System : `NixOS 25.11 (unstable)`
 ```
 Тестируется новый тип mini player в панели с использованием обложки альбома в качестве фона.
 Не уверен, что это хорошая идея, но можно попробовать.
-если будет отлично смотреться и при этом не будет проблем с читаемостю названия и автора, то загружу в гит
 ```
 
 ## -- Комбинации клавиш -- :
@@ -160,7 +159,7 @@ and in eww at "~/.config/eww/bar" in the hbar.yuck file, replace (lbgz) with (bg
 ```
 Testing a new mini player type in the bar that uses album artwork as background.
 Not sure if it's a good idea, but feel free to try it out.
-If it looks great and doesn’t mess with the readability of the title and author, I’ll upload it to Git.
+This have in russian localization, next I create a english localization update, sorry, but my english very bad & creating english localization - is very hard
 ```
 
 ## -- Keybindings -- :
