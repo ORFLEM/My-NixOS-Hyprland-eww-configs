@@ -20,10 +20,6 @@
             "type": "custom"
         },
         {
-            "key": "  ",
-            "type": "custom"
-        },
-        {
             "key": "╭───────────╮",
             "type": "custom"
         },
@@ -49,9 +45,13 @@
             "key": "│ {#32}  kernel {#keys}│",
             "type": "kernel"
         },
+		{
+			"key": "│ {#32}  pckgs  {#keys}│",
+			"type": "packages"	
+		},
         {
-            "key": "│ {#32}󰇄  desktop{#keys}│",
-            "type": "de"
+            "key": "│ {#32}󰇄  WM     {#keys}│",
+            "type": "wm"
         },
         {
             "key": "│ {#32}  term   {#keys}│",
@@ -75,10 +75,16 @@
             "key": "│ {#32}  memory {#keys}│",
             "type": "memory"
         },
+        // {
+        //     "key": "│ {#32}󰩟  network{#keys}│",
+        //     "type": "localip",
+        //     "format": "{ipv4} ({ifname})"
+        // },
         {
-            "key": "│ {#32}󰩟  network{#keys}│",
-            "type": "localip",
-            "format": "{ipv4} ({ifname})"
+            "type": "command",
+            "key": "│ {#32}󱦟  livesys{#keys}│",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference день",
+            "format": "Этой системе {1}"
         },
         {
             "key": "├───────────┤",
