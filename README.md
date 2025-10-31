@@ -4,8 +4,8 @@ System : `NixOS 25.11 (unstable)`
 
 # Rus
 
-![](https://img.shields.io/github/last-commit/ORFLEM/My-NixOS-Hyprland-eww-configs?&style=for-the-badge&color=8ad7eb&label=Последний%20коммент&logo=git&logoColor=D9E0EE&labelColor=1E202B)
-![](https://img.shields.io/github/repo-size/ORFLEM/My-NixOS-Hyprland-eww-configs?color=86dbce&label=Размер%20проекта&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/last-commit/ORFLEM/My-NixOS-Hyprland-eww-configs?&style=for-the-badge&color=bbbbbb&label=Последний%20коммент&logo=git&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/repo-size/ORFLEM/My-NixOS-Hyprland-eww-configs?color=cccccc&label=Размер%20проекта&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
 
 # Важно
 ```
@@ -129,8 +129,8 @@ System : `NixOS 25.11 (unstable)`
 
 # Eng
 
-![](https://img.shields.io/github/last-commit/ORFLEM/My-NixOS-Hyprland-eww-configs?&style=for-the-badge&color=8ad7eb&logo=git&logoColor=D9E0EE&labelColor=1E202B)
-![](https://img.shields.io/github/repo-size/ORFLEM/My-NixOS-Hyprland-eww-configs?color=86dbce&label=Project%20size&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/last-commit/ORFLEM/My-NixOS-Hyprland-eww-configs?&style=for-the-badge&color=bbbbbb&logo=git&logoColor=D9E0EE&labelColor=1E202B)
+![](https://img.shields.io/github/repo-size/ORFLEM/My-NixOS-Hyprland-eww-configs?color=cccccc&label=Project%20size&logo=protondrive&style=for-the-badge&logoColor=D9E0EE&labelColor=1E202B)
 
 # Important
 ```
