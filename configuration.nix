@@ -10,10 +10,13 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 20d";
+    options = "--delete-older-than 10d";
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_lqx;
+  boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
 
   # ============================================================
   # BOOT
@@ -132,7 +135,6 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
       xdg-desktop-portal-gtk
     ];
   };
@@ -173,16 +175,85 @@
   # ============================================================
   hardware.graphics.enable = true;
 
+  # AMD ROCm
+  environment.variables = {
+    HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+  };
+
   # ============================================================
-  # USER CONFIGURATION
+  # HARDWARE - I2C & RGB
+  # ============================================================
+  hardware.i2c.enable = true;
+  
+  services.hardware.openrgb = {
+    enable = true;
+    motherboard = "amd";
+  };
+  
+  # ============================================================
+  # USER
   # ============================================================
   # Раскомментируй и настрой под себя:
   # users.users.<username> = {
   #   isNormalUser = true;
   #   description = "<Your Name>";
-  #   extraGroups = [ "networkmanager" "wheel" ];
+  #   extraGroups = [ "networkmanager" "wheel" "input" "plugdev" "storage" "i2c" ];
   #   packages = with pkgs; [];
   # };
+
+  # ============================================================
+  # FILESYSTEMS
+  # ============================================================
+
+  # Automount все диски
+  services.udisks2.enable = true;
+  services.udisks2.settings = {
+    "udisks2.conf" = {
+      udisks2 = {
+        modules = ["*"];
+        modules_load_preference = "ondemand";
+      };
+      defaults = {
+        encryption = "luks2";
+      };
+    };
+  };
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.udisks2.filesystem-mount" ||
+          action.id == "org.freedesktop.udisks2.filesystem-mount-system" ||
+          action.id == "org.freedesktop.udisks2.erase-device" ||
+          action.id == "org.freedesktop.udisks2.modify-device" ||
+          action.id == "org.freedesktop.udisks2.filesystem-unmount" ||
+          action.id == "org.freedesktop.udisks2.filesystem-unmount-others") {
+        return polkit.Result.YES;
+      }
+    });
+    
+    // Права для Flatpak management (Boxflat)
+    polkit.addRule(function(action, subject) {
+      if (action.id == "org.freedesktop.Flatpak.app-install" ||
+          action.id == "org.freedesktop.Flatpak.runtime-install" ||
+          action.id == "org.freedesktop.Flatpak.app-uninstall" ||
+          action.id == "org.freedesktop.Flatpak.runtime-uninstall" ||
+          action.id == "org.freedesktop.Flatpak.modify-repo") {
+        if (subject.isInGroup("wheel")) {
+          return polkit.Result.YES;
+        }
+      }
+    });
+  '';
+
+  systemd.user.services.udiskie = {
+    description = "Automount all drives";
+    wantedBy = [ "graphical-session.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.udiskie}/bin/udiskie --all -a -n -t -f btrfs -f ext4 -f ext3 -f ext2 -f ntfs -f vfat -f exfat -f xfs -f f2fs";
+      Restart = "on-failure";
+    };
+  };
+
 
   # ============================================================
   # SYSTEM SERVICES
@@ -191,6 +262,9 @@
   services.tumbler.enable = true;
   services.flatpak.enable = true;
   services.gvfs.enable = true;
+  
+  # Flatpak permissions для Boxflat
+  xdg.portal.config.common.default = "*";
 
   programs.dconf.enable = true;
   services.dbus.packages = with pkgs; [ dconf libnotify glib gtk3 ];
@@ -204,7 +278,6 @@
   fonts.packages = with pkgs; [
     iosevka-bin
     noto-fonts-cjk-sans
-    nerd-fonts._3270
     nerd-fonts.mononoki
   ];
   fonts.fontconfig.enable = true;
