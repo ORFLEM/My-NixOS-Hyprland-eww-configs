@@ -2,25 +2,8 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  # ============================================================
-  # NIX SETTINGS
-  # ============================================================
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 10d";
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_lqx;
-  boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
-
-  # ============================================================
-  # BOOT
-  # ============================================================
   boot.loader = {
     grub = {
       enable = true;
@@ -31,8 +14,15 @@
     efi.canTouchEfiVariables = true;
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
+  };
 
+  boot.kernelPackages = pkgs.linuxPackages_lqx;
+  boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
+  
   # ============================================================
   # CONSOLE & TTY (Kanagawa theme)
   # ============================================================
@@ -305,6 +295,7 @@
         shotwell
         steam
         swww
+        firefox
         xarchiver
         vscodium
   
