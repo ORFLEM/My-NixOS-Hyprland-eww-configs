@@ -83,7 +83,7 @@
 )
 
 (defwidget hactive_window []
-  (box :class "aw" :orientation "h" :space-evenly true :halign "start" :tooltip "active window"
+  (box :class "aw" :orientation "h" :space-evenly true :halign "start" :tooltip "активное окно"
     (label :text "${hAW}")
   )
 )
@@ -98,7 +98,7 @@
 
 (defwidget hkeyboard_layout []
   (box :class "kbl":orientation "h" :space-evenly true :halign "start"
-    (label :class "lbl-clr" :tooltip "keyboard layout" :text "󰌏 ")
+    (label :class "lbl-clr" :tooltip "Язык" :text "󰌏 ")
     (label :text "${hkblayout}")
   )
 )
