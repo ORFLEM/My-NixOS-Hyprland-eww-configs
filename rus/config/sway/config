@@ -18,14 +18,6 @@ exec /run/wrappers/bin/gnome-keyring-daemon --start --components=secrets,ssh
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
-exec openrgb --profile orflem
-
-# Программы
-exec app.zen_browser.zen
-exec Telegram
-# exec io.github.lawstorant.boxflat
-# exec steam
-exec solaar
 
 # Утилиты рабочего места
 exec eww daemon && eww open-many Btime corner-top-left corner-top-right corner-bottom-left corner-bottom-right notifications player mycal weather sysinf sbar
